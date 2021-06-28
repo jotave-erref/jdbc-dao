@@ -1,7 +1,7 @@
 package aplication;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -11,6 +11,7 @@ import model.entities.Seller;
 public class Program {
 
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		
 		SellerDao sellerDao = DaoFactory.createSellerDao(); //Injeção de dependência sem explicitar a implementação
 		
@@ -37,14 +38,25 @@ public class Program {
 		Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 3500.0, department);
 		sellerDao.insert(newSeller);
 		System.out.println(newSeller);
-		*/
+		
 		System.out.println("\n=== Test 5: seller Update === ");
 		seller = sellerDao.findById(1);
 		seller.setName("Lauren Hill");
 		seller.setEmail("laurenHill@gmail.com");
 		sellerDao.update(seller);
 		System.out.println("Update completed! ");
-
+		 */
+		
+		
+		System.out.println("\n=== Test 6: seller Delete === ");
+		System.out.println("Enter with id for delete: ");
+		int id = sc.nextInt();
+		seller = sellerDao.findById(10);
+		sellerDao.deleteById(id);
+		System.out.println("Delete completed! ");
+		
+		
+		sc.close();
 	}
 
 }
