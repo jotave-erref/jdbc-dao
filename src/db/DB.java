@@ -10,7 +10,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DB {
-
+	//Metodos estaticos auxiliares para obter e fechar uma conxao com o banco de dados
+	
 	public static Connection conn = null;
 	
 	public static Connection getConnection() {
@@ -39,6 +40,8 @@ public class DB {
 	}
 	
 	private static Properties loadProperties() {
+		//metodo auxiliar para carregar as propriedades que estao no db.properties
+		
 		try(FileInputStream fs = new FileInputStream("db.properties")){
 			Properties props =  new Properties();
 			props.load(fs);
